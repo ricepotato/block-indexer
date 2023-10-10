@@ -1,7 +1,8 @@
+import pickle
 from unittest.mock import patch
 import web3
 
-from bic_indexer.w3 import get_klaytn_web3_provider
+from bicxer.w3 import get_klaytn_web3_provider
 
 
 def test_klaytn_web3_provider(klaytn_web3_provider: web3.Web3):
@@ -21,7 +22,7 @@ def test_get_klaytn_web3_provider(env):
         kas_secret_key_id = "secret_key"
 
     # patch the config.Settings class to return the mock settings object
-    with patch("bic_indexer.w3.config.Settings", return_value=MockSettings()):
+    with patch("bicxer.w3.config.Settings", return_value=MockSettings()):
         # call the function to get the provider
         provider = get_klaytn_web3_provider()
 
@@ -30,3 +31,14 @@ def test_get_klaytn_web3_provider(env):
 
         # assert that the provider is an instance of Web3
         assert isinstance(provider, web3.Web3)
+
+
+def test_get_klaytn_get_block_by_num(klaytn_web3_provider: web3.Web3):
+    # 121681225
+    block_num = 121681225
+    block_data = klaytn_web3_provider.eth.get_block(block_num, True)
+    assert block_data
+
+    pickle.dumps(block_data)
+    with open(f"./tests/data/block_{block_num}.pickle", "wb") as f:
+        pickle.dump(block_data, f)

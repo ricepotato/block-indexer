@@ -13,5 +13,9 @@ logic
 """
 
 
-def get_block(provider: web3.Web3, block_identifier: BlockIdentifier):
-    return provider.eth.get_block(block_identifier)
+def get_block(
+    provider: web3.Web3,
+    block_identifier: BlockIdentifier,
+    full_transactions: bool = False,
+):
+    return provider.eth.get_block(block_identifier, full_transactions)

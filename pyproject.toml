@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "bic-indexer"
+name = "bicxer"
 version = "0.1.0"
 description = ""
 authors = ["Ben <ben@ahnlab.io>"]
 readme = "README.md"
-packages = [{include = "bic_indexer"}]
+packages = [{include = "bicxer"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

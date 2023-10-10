@@ -1,11 +1,11 @@
 import pytest
 import dotenv
-from bic_indexer import w3
+from bicxer import w3
 
 
 @pytest.fixture
 def env():
-    dotenv.load_dotenv("./bic_indexer/.env")
+    dotenv.load_dotenv("./bicxer/.env")
 
 
 @pytest.fixture

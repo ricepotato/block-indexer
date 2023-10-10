@@ -3,7 +3,7 @@ import functools
 
 import web3
 
-from bic_indexer import config
+from bicxer import config
 
 
 def get_klaytn_web3_provider_using_kas(
